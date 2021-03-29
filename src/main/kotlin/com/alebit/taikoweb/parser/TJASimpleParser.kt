@@ -148,7 +148,7 @@ private fun similarFile(path: Path, filename: String, similarFile: Boolean): Fil
         var simFile = orig;
         for (file in path.toFile().listFiles()) {
             if (file.extension.toLowerCase().equals(origExt)) {
-                val s = similarity.apply(orig.name, file.name);
+                val s = similarity.apply(orig.nameWithoutExtension, file.nameWithoutExtension);
                 if (s > sim) {
                     sim = s;
                     simFile = file;
