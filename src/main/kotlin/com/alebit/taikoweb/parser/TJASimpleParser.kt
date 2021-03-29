@@ -14,7 +14,7 @@ private val similarity = JaroWinklerSimilarity();
 fun parseTJA(file: File, category: Genre, similarFile: Boolean): TaikoWebSong {
     val lines = file.readLines(Charset.forName("Windows-31J"));
     val song = TaikoWebSong(file);
-    var course = -1;
+    var course = 3;
     var level = 0;
     song.category = category;
     song.chartType = "tja";
