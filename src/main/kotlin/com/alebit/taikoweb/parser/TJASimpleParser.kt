@@ -15,7 +15,8 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean): TaikoWebSong {
     val lines = file.readLines(Charset.forName("Windows-31J"));
     val song = TaikoWebSong(file);
     var course = 3;
-    var level = 0;
+    var level = 10;
+    song.courseOni = level;
     song.category = category;
     song.chartType = "tja";
     for (line in lines) {
