@@ -5,7 +5,7 @@ import java.io.File
 import java.nio.charset.Charset
 
 fun parseGenre(file: File): Genre {
-    val lines = file.readLines(Charset.forName("SHIFT-JIS"));
+    val lines = file.readLines(Charset.forName("Windows-31J"));
     for (line in lines) {
         val values = line.split(Regex.fromLiteral("="), 2);
         if (values.size == 2) {
