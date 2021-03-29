@@ -7,7 +7,7 @@ import java.lang.Exception
 import java.nio.file.Paths
 
 fun main(args: Array<String>) {
-    val argParser = ArgParser("Taiko Web Song Import Tool");
+    val argParser = ArgParser("TaikoWebSongImportTool");
     val category by argParser.option(ArgType.Choice<Genre>(), "category", "c", "The default category of songs. It would be overwritten if genre.ini is existed.");
     val similar by argParser.option(ArgType.Boolean, "similar-file", "s", "Find the most similar file under the directory of the TJA if the file is not found. This could prevent problem caused by encoding or case sensitivity.");
     val source by argParser.argument(ArgType.String, "Source", "The path to the directory of TJA files. It would find TJAs recursively.");
