@@ -21,3 +21,15 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-cli:0.3.2'
     implementation 'org.apache.commons:commons-text:1.9'
 }
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    with jar
+}
