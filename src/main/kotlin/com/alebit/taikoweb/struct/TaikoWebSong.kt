@@ -2,7 +2,7 @@ package com.alebit.taikoweb.struct
 
 import java.io.File
 
-class TaikoWebSong {
+data class TaikoWebSong (val chartFile: File): Comparable<TaikoWebSong> {
     var title: String? = null;
     var titleJa: String? = null;
     var titleEn: String? = null;
@@ -33,4 +33,8 @@ class TaikoWebSong {
     var lyrics: Boolean = false;
     var musicFile: File? = null;
     var lyricFile: File? = null;
+
+    override fun compareTo(other: TaikoWebSong): Int {
+        return this.title!!.compareTo(other.title!!);
+    }
 }

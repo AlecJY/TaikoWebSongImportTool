@@ -18,6 +18,10 @@ fun main(args: Array<String>) {
     argParser.parse(args);
     try {
         val taikoWeb = TaikoWeb(url, user, passwd);
-        importTJAs(Paths.get(source), Paths.get(dest), taikoWeb, category ?: Genre.None, similar ?: false);
+        val songs = loadTJAs(Paths.get(source), category ?: Genre.None, similar ?: false);
+        for (song in songs) {
+            println("Import: " + song.chartFile.absolutePath);
+            taikoWeb.addSong(song, Paths.get(dest));
+        }
     } catch (e: Exception) {e.printStackTrace()}
 }

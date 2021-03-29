@@ -77,7 +77,7 @@ class TaikoWeb {
         return null;
     }
 
-    fun addSong(song: TaikoWebSong, tja: File, target: Path): Boolean {
+    fun addSong(song: TaikoWebSong, target: Path): Boolean {
         val songInfo = getSongInfo("new") ?: return false;
 
         if (songInfo.id <= 0) {
@@ -94,7 +94,7 @@ class TaikoWeb {
             return false;
         }
         try {
-            Files.copy(tja.toPath(), targetDir.resolve("main.tja"), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(song.chartFile.toPath(), targetDir.resolve("main.tja"), StandardCopyOption.REPLACE_EXISTING);
             Files.copy(song.musicFile!!.toPath(),
                 targetDir.resolve(if (song.musicType.equals("ogg")) "main.ogg" else "main.mp3"),
                 StandardCopyOption.REPLACE_EXISTING);
