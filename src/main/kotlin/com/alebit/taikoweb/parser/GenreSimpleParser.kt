@@ -16,7 +16,7 @@ fun parseGenre(file: File): Genre {
                     "ボーカロイド™曲", "vocaloid™ music", "ボーカロイド曲", "ボーカロイド", "vocaloid music", "vocaloid" -> return Genre.Vocaloid;
                     "バラエティ", "variety", "综合音乐", "綜合音樂", "버라이어티", "バラエティー", "どうよう", "童謡・民謡", "children", "children/folk", "children-folk" -> return  Genre.Variety;
                     "クラシック", "classical", "古典音乐", "古典音樂", "클래식", "クラッシック", "classic" -> return Genre.Classical;
-                    "ゲームミュージック", "game Music", "游戏音乐", "遊戲音樂", "게임" -> return Genre.Game;
+                    "ゲームミュージック", "game music", "游戏音乐", "遊戲音樂", "게임" -> return Genre.Game;
                     "ナムコオリジナル", "namco original", "namco原创音乐", "namco原創音樂", "남코 오리지널" -> return Genre.Namco
                 }
             }
