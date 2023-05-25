@@ -40,8 +40,18 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean): TaikoWebSong {
                     try {
                         val wave = similarFile(file.toPath().parent, value, similarFile);
                         if (!wave.exists()) {
-                            System.err.println("Could not find music \"" + wave.absolutePath + "\"");
-                            break;
+                            val fallbackOggFile = File(file.toPath().parent.toString(), "main.ogg")
+                            val fallbackMp3File = File(file.toPath().parent.toString(), "main.mp3")
+                            if (fallbackOggFile.exists()) {
+                                song.musicType = "ogg";
+                                song.musicFile = fallbackOggFile;
+                            } else if (fallbackMp3File.exists()) {
+                                song.musicType = "mp3";
+                                song.musicFile = fallbackMp3File;
+                            } else {
+                                System.err.println("Could not find music \"" + wave.absolutePath + "\"");
+                                break;
+                            }
                         } else if (wave.extension.toLowerCase().equals("ogg")) {
                             song.musicType = "ogg";
                             song.musicFile = wave;
