@@ -8,11 +8,17 @@ import java.lang.Exception
 import java.lang.NumberFormatException
 import java.nio.charset.Charset
 import java.nio.file.Path
+import java.nio.charset.StandardCharsets
 
 private val similarity = JaroWinklerSimilarity();
 
-fun parseTJA(file: File, category: Genre, similarFile: Boolean): TaikoWebSong {
-    val lines = file.readLines(Charset.forName("Windows-31J"));
+fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): TaikoWebSong {
+    val lines: List<String>;
+    if (utf8) {
+        lines = file.readLines(StandardCharsets.UTF_8);
+    } else {
+        lines = file.readLines(Charset.forName("Windows-31J"));
+    }
     val song = TaikoWebSong(file);
     var course = 3;
     var level = 10;
