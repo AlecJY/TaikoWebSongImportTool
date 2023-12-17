@@ -6,6 +6,8 @@ import com.alebit.taikoweb.struct.LoginResponse
 import com.alebit.taikoweb.struct.TaikoWebSong
 import com.google.gson.Gson
 import org.apache.http.client.HttpClient
+import org.apache.http.client.config.CookieSpecs
+import org.apache.http.client.config.RequestConfig
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import org.apache.http.client.methods.CloseableHttpResponse
 import org.apache.http.client.methods.HttpGet
@@ -33,6 +35,7 @@ class TaikoWeb {
     constructor(baseUri: String, username: String, password: String) {
         this.baseUri = URI.create(baseUri);
         this.httpClient = HttpClientBuilder.create()
+            .setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build())
             .setDefaultCookieStore(BasicCookieStore())
             .build();
         val result = login(username, password);
