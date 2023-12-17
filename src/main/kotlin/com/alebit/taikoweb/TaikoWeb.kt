@@ -9,7 +9,6 @@ import org.apache.http.client.HttpClient
 import org.apache.http.client.config.CookieSpecs
 import org.apache.http.client.config.RequestConfig
 import org.apache.http.client.entity.UrlEncodedFormEntity
-import org.apache.http.client.methods.CloseableHttpResponse
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.entity.ContentType
@@ -18,10 +17,7 @@ import org.apache.http.impl.client.BasicCookieStore
 import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.message.BasicNameValuePair
 import org.jsoup.Jsoup
-import java.io.File
 import java.io.InputStreamReader
-import java.lang.Exception
-import java.lang.NumberFormatException
 import java.net.URI
 import java.nio.file.Files
 import java.nio.file.Path

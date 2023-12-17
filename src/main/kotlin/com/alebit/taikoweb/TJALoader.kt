@@ -5,7 +5,6 @@ import com.alebit.taikoweb.parser.parseTJA
 import com.alebit.taikoweb.struct.Genre
 import com.alebit.taikoweb.struct.TaikoWebSong
 import java.nio.file.Path
-import kotlin.collections.ArrayList
 
 fun loadTJAs(source: Path, category: Genre = Genre.None, similarFile: Boolean = false, utf8: Boolean = false): ArrayList<TaikoWebSong> {
     val songs = ArrayList<TaikoWebSong>();

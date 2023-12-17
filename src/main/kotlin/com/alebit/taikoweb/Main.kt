@@ -3,7 +3,6 @@ package com.alebit.taikoweb
 import com.alebit.taikoweb.struct.Genre
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
-import java.lang.Exception
 import java.nio.file.Paths
 
 fun main(args: Array<String>) {

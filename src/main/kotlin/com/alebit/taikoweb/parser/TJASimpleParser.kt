@@ -4,11 +4,9 @@ import com.alebit.taikoweb.struct.Genre
 import com.alebit.taikoweb.struct.TaikoWebSong
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import java.io.File
-import java.lang.Exception
-import java.lang.NumberFormatException
 import java.nio.charset.Charset
-import java.nio.file.Path
 import java.nio.charset.StandardCharsets
+import java.nio.file.Path
 
 private val similarity = JaroWinklerSimilarity();
 
