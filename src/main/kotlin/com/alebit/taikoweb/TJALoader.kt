@@ -1,5 +1,6 @@
 package com.alebit.taikoweb
 
+import com.alebit.taikoweb.parser.parseBoxDef
 import com.alebit.taikoweb.parser.parseGenre
 import com.alebit.taikoweb.parser.parseTJA
 import com.alebit.taikoweb.struct.Genre
@@ -15,12 +16,22 @@ fun loadTJAs(source: Path, category: Genre = Genre.None, similarFile: Boolean = 
 
 private fun loadTJAs(source: Path, songs: ArrayList<TaikoWebSong>, category: Genre = Genre.None, similarFile: Boolean = false, utf8: Boolean = false) {
     val genreFile = source.resolve("genre.ini").toFile();
-    var genre: Genre = category;
-    if (source.resolve("genre.ini").toFile().exists()) {
+    val boxDefFile = source.resolve("box.def").toFile();
+    var genre: Genre = Genre.None;
+    if (genreFile.exists()) {
         val newCategory = parseGenre(genreFile, utf8);
         if (newCategory != Genre.None) {
             genre = newCategory;
         }
+    }
+    if (genre == Genre.None && boxDefFile.exists()) {
+        val newCategory = parseBoxDef(boxDefFile, utf8);
+        if (newCategory != Genre.None) {
+            genre = newCategory;
+        }
+    }
+    if (genre == Genre.None) {
+        genre = category
     }
     val files = source.toFile().listFiles();
     for (file in files) {
