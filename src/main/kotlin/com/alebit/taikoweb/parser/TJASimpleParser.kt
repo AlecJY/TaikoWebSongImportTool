@@ -27,7 +27,7 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
         val values = line.split(Regex.fromLiteral(":"), 2);
         if (values.size == 2) {
             val value = values[1].trim();
-            when (values[0].toUpperCase()) {
+            when (values[0].uppercase()) {
                 "TITLE" -> song.title = value;
                 "TITLEJA" -> song.titleJa = value;
                 "TITLEEN" -> song.titleEn = value;
@@ -46,10 +46,10 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
                         if (!wave.exists()) {
                             System.err.println("Could not find music \"" + wave.absolutePath + "\"");
                             break;
-                        } else if (wave.extension.toLowerCase().equals("ogg")) {
+                        } else if (wave.extension.lowercase() == "ogg") {
                             song.musicType = "ogg";
                             song.musicFile = wave;
-                        } else if (wave.extension.toLowerCase().equals("mp3")) {
+                        } else if (wave.extension.lowercase() == "mp3") {
                             song.musicType = "mp3";
                             song.musicFile = wave;
                         } else {
@@ -79,7 +79,7 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
                         if (!lyric.exists()) {
                             System.err.println("Could not find lyric \"" + lyric.absolutePath + "\"");
                             break;
-                        } else if (lyric.extension.toLowerCase().equals("vtt")) {
+                        } else if (lyric.extension.lowercase() == "vtt") {
                             song.lyrics = true;
                             song.lyricFile = lyric;
                         } else {
@@ -100,7 +100,7 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
                     }
                 }
                 "COURSE" -> {
-                    when(value.toLowerCase()) {
+                    when(value.lowercase()) {
                         "0", "easy" -> {course = 0; song.courseEasy = level;}
                         "1", "normal" -> {course = 1; song.courseNormal = level;}
                         "2", "hard" -> {course = 2; song.courseHard = level;}
@@ -148,11 +148,11 @@ private fun similarFile(path: Path, filename: String, similarFile: Boolean): Fil
         if (orig.exists()) {
             return orig;
         }
-        val origExt = orig.extension.toLowerCase();
+        val origExt = orig.extension.lowercase();
         var sim: Double = Double.MIN_VALUE;
         var simFile = orig;
         for (file in path.toFile().listFiles()) {
-            if (file.extension.toLowerCase().equals(origExt)) {
+            if (file.extension.lowercase() == origExt) {
                 val s = similarity.apply(orig.nameWithoutExtension, file.nameWithoutExtension);
                 if (s > sim) {
                     sim = s;

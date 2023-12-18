@@ -9,8 +9,8 @@ fun parseGenre(file: File): Genre {
     for (line in lines) {
         val values = line.split(Regex.fromLiteral("="), 2);
         if (values.size == 2) {
-            if (values[0].toLowerCase().equals("genrename")) {
-                when (values[1].toLowerCase()) {
+            if (values[0].lowercase() == "genrename") {
+                when (values[1].lowercase()) {
                     "j-pop", "pop", "流行音乐", "流行音樂" -> return Genre.Pop;
                     "アニメ", "anime", "卡通动画音乐", "卡通動畫音樂", "애니메이션" -> return Genre.Anime;
                     "ボーカロイド™曲", "vocaloid™ music", "ボーカロイド曲", "ボーカロイド", "vocaloid music", "vocaloid" -> return Genre.Vocaloid;

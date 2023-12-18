@@ -26,7 +26,7 @@ private fun loadTJAs(source: Path, songs: ArrayList<TaikoWebSong>, category: Gen
     for (file in files) {
         if (file.isDirectory) {
             loadTJAs(file.toPath(), songs, genre, similarFile, utf8);
-        } else if (file.extension.toLowerCase().equals("tja")) {
+        } else if (file.extension.lowercase() == "tja") {
             println("Load TJA: " + file.absolutePath);
             val song = parseTJA(file, genre, similarFile, utf8);
             if (song.title == null || song.musicFile == null) {
