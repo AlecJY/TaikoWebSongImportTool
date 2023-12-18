@@ -28,6 +28,7 @@ task fatJar(type: Jar) {
     }
 
     from {
+        exclude '**/module-info.class', '**/LICENSE', '**/DEPENDENCIES', '**/NOTICE', '**/LICENSE.txt', '**/NOTICE.txt'
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
