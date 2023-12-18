@@ -17,7 +17,7 @@ private fun loadTJAs(source: Path, songs: ArrayList<TaikoWebSong>, category: Gen
     val genreFile = source.resolve("genre.ini").toFile();
     var genre: Genre = category;
     if (source.resolve("genre.ini").toFile().exists()) {
-        val newCategory = parseGenre(genreFile);
+        val newCategory = parseGenre(genreFile, utf8);
         if (newCategory != Genre.None) {
             genre = newCategory;
         }

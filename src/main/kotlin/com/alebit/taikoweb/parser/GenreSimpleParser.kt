@@ -3,9 +3,10 @@ package com.alebit.taikoweb.parser
 import com.alebit.taikoweb.struct.Genre
 import java.io.File
 import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
 
-fun parseGenre(file: File): Genre {
-    val lines = file.readLines(Charset.forName("Windows-31J"));
+fun parseGenre(file: File, utf8: Boolean): Genre {
+    val lines = file.readLines(if (utf8) StandardCharsets.UTF_8 else Charset.forName("Windows-31J"));
     for (line in lines) {
         val values = line.split(Regex.fromLiteral("="), 2);
         if (values.size == 2) {
