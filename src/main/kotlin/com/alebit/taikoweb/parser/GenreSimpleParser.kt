@@ -10,7 +10,7 @@ fun parseGenre(file: File, utf8: Boolean): Genre {
     for (line in lines) {
         val values = line.split(Regex.fromLiteral("="), 2);
         if (values.size == 2) {
-            if (values[0].lowercase() == "genrename") {
+            if (values[0].trimBom().lowercase() == "genrename") {
                 val genre = Genre.parse(values[1])
                 if (genre != Genre.None) {
                     return genre
@@ -26,7 +26,8 @@ fun parseBoxDef(file: File, utf8: Boolean): Genre {
     for (line in lines) {
         val values = line.split(Regex.fromLiteral(":"), 2);
         if (values.size == 2) {
-            if (values[0].lowercase().startsWith("#title") || values[0].lowercase().startsWith("#genre")) {
+            if (values[0].trimBom().lowercase().startsWith("#title") ||
+                values[0].trimBom().lowercase().startsWith("#genre")) {
                 val genre = Genre.parse(values[1])
                 if (genre != Genre.None) {
                     return genre

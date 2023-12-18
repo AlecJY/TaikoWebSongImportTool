@@ -27,7 +27,7 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
         val values = line.split(Regex.fromLiteral(":"), 2);
         if (values.size == 2) {
             val value = values[1].trim();
-            when (values[0].uppercase()) {
+            when (values[0].trimBom().uppercase()) {
                 "TITLE" -> song.title = value;
                 "TITLEJA" -> song.titleJa = value;
                 "TITLEEN" -> song.titleEn = value;
@@ -129,7 +129,7 @@ fun parseTJA(file: File, category: Genre, similarFile: Boolean, utf8: Boolean): 
                 }
             }
         }
-        if (line.startsWith("#BRANCHSTART")) {
+        if (line.trimBom().startsWith("#BRANCHSTART")) {
             when (course) {
                 0 -> song.branchEasy = true;
                 1 -> song.branchNormal = true;
